@@ -74,6 +74,7 @@ extern "C" {
 # define inverse_bw_transform inverse_bw_transform64
 # define sufcheck sufcheck64
 # define sa_search sa_search64
+# define sa_searchb sa_searchb64
 # define sa_simplesearch sa_simplesearch64
 # define sssort sssort64
 # define trsort trsort64

@@ -256,6 +256,30 @@ _compare(const sauchar_t *T, saidx_t Tsize,
 
 /* Search for the pattern P in the string T. */
 saidx_t
+sa_searchb(const sauchar_t *T, saidx_t Tsize,
+          const sauchar_t *P, saidx_t Psize,
+          const saidx_t *SA, saidx_t SAsize,
+		  saidx_t *idx,
+		  saidx_t start_left, saidx_t start_right
+		  ) {
+	/* printf("Left: %lld\tRight: %lld\n", start_left, start_right); */
+	/* printf("Length: %lld\n\n", start_right-start_left); */
+	/* printf("Real start: %x\tOffset: %x\n", SA, &(SA[start_left])); */
+	saidx_t r = 42;
+	saidx_t count = 38;
+	/* printf("1 - %lld -> %lld\n", r, count); */
+	count = sa_search(
+			T, Tsize,
+			P, Psize,
+			&SA[start_left], start_right-start_left,
+			&r
+			);
+	/* printf("2 - %lld -> %lld\n", r, count); */
+	*idx = start_left + r;
+	return count;
+}
+
+saidx_t
 sa_search(const sauchar_t *T, saidx_t Tsize,
           const sauchar_t *P, saidx_t Psize,
           const saidx_t *SA, saidx_t SAsize,
